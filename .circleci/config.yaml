@@ -4,6 +4,9 @@ defaults: &defaults
 
 version: 2
 jobs:
+  build:
+    steps:
+      - checkout
   terraform_plan:
     <<: *defaults
     steps:
