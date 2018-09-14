@@ -1,15 +1,13 @@
-defaults: &defaults
-  docker:
-    - image: hashicorp/terraform:light
-
 version: 2
 jobs:
   build:
-    <<: &defaults
+    docker:
+      - image: hashicorp/terraform:light
     steps:
       - checkout
   terraform_plan:
-    <<: *defaults
+    docker:
+      - image: hashicorp/terraform:light
     steps:
       - checkout
       - run:
@@ -18,7 +16,8 @@ jobs:
             terraform init
             terraform plan
   terraform_apply:
-    <<: *defaults
+    docker:
+      - image: hashicorp/terraform:light
     steps:
       - checkout
       - run:
